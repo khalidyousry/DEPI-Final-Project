@@ -3,44 +3,68 @@
 <table width="100%">
   <tr>
     <td width="30%" valign="top">
+      <p align="center">
+        <img src="https://img.shields.io/badge/Status-Phase_1_Completed-green?style=for-the-badge" width="100%">
+      </p>
       <h3>🛠️ Tech Stack</h3>
       <ul>
-        <li><b>Analysis:</b> SQL</li>
-        <li><b>Dashboard:</b> Excel</li>
-        <li><b>Planning:</b> Python</li>
+        <li><b>Database:</b> SQL (Data Cleaning & EDA)</li>
+        <li><b>BI Tool:</b> MS Excel (Power Pivot & DAX)</li>
+        <li><b>Planned:</b> Python (Scikit-Learn)</li>
       </ul>
       <hr>
-      <h3>📊 Quick Stats</h3>
+      <h3>📊 Project Metrics</h3>
       <ul>
-        <li><b>Records:</b> 10,000</li>
-        <li><b>Failures:</b> 3.39%</li>
-        <li><b>Status:</b> Active</li>
+        <li><b>Dataset Size:</b> 10,000 Records</li>
+        <li><b>Failure Rate:</b> 3.39%</li>
+        <li><b>Industry:</b> Smart Manufacturing</li>
       </ul>
       <hr>
-      <h3>🔗 Links</h3>
-      <a href="#">🌐 Portfolio</a><br>
-      <a href="#">👔 LinkedIn</a>
+      <h3>🔗 Connect with Me</h3>
+      
     </td>
     
     <td width="70%" valign="top">
       <h2>📌 Project Overview</h2>
-      <p>Transforming raw machine sensor data into strategic insights to mitigate downtime and optimize factory performance using <b>Predictive Maintenance</b> techniques.</p>
+      <p>This project, part of <b>"The Zero-Downtime Initiative"</b>, focuses on analyzing machine sensor data to identify and predict manufacturing failures. By analyzing variables like Temperature, Torque, and Tool Wear, we transform raw data into actionable maintenance strategies to minimize production interruptions.</p>
       
-      <h3>🚀 Completed Milestones</h3>
-      <p>✅ <b>Data Exploration:</b> Deep-dive SQL analysis to identify failure correlations.<br>
-      ✅ <b>Interactive Dashboard:</b> Developed a high-end Excel UI with Power Pivot & DAX.</p>
+      <h3>🚀 Milestones Achieved</h3>
+      <ul>
+        <li><b>Data Engineering (SQL):</b> Developed structured queries to handle 10k rows, performing data integrity checks and identifying failure correlations.</li>
+        <li><b>Interactive UI (Excel):</b> Built a professional dashboard using Power Pivot, providing a real-time view of machine health and operational KPIs.</li>
+      </ul>
       
       <h3>💡 Key Analytical Insights</h3>
       <blockquote>
-        <b>Critical Limit:</b> Machines are 40% more likely to fail when Torque exceeds 60 Nm.<br>
-        <b>Main Drivers:</b> Power Failure & Heat Dissipation are the primary downtime causes.
+        <b>1. Critical Failure Driver:</b> "Power Failure" and "Heat Dissipation" are responsible for over 60% of total downtime.<br>
+        <b>2. Risk Threshold:</b> Machine failure probability increases by <b>40%</b> when Torque exceeds <b>60 Nm</b>.<br>
+        <b>3. Quality Impact:</b> Low-grade products (L) exhibit higher failure volatility compared to High-grade (H) products.
       </blockquote>
 
-      <h3>📈 Machine Learning (Next Step)</h3>
-      <p>Implementing a <b>Random Forest Classifier</b> in Python to predict failures with 90%+ precision.</p>
+      <h3>📈 Machine Learning Roadmap (Phase 2)</h3>
+      <p>Currently developing a <b>Predictive Model</b> using Python to forecast failures before they occur.
+      <ul>
+        <li>Handling class imbalance with SMOTE.</li>
+        <li>Training Random Forest & XGBoost classifiers.</li>
+      </ul>
+      </p>
     </td>
   </tr>
 </table>
 
+---
 
 
+
+## 💻 SQL Analysis Snippet
+```sql
+-- Analysis of Failure Types and Operational Limits
+SELECT 
+    failure_type,
+    COUNT(*) AS total_failures,
+    AVG(rotational_speed_rpm) AS avg_speed,
+    AVG(torque_nm) AS avg_torque
+FROM maintenance
+WHERE Target = 1
+GROUP BY failure_type
+ORDER BY total_failures DESC;
