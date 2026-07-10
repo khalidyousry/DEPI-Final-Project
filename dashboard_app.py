@@ -397,7 +397,7 @@ def answer_machine_question(query):
 
     if 'model' in q or 'what model' in q or 'how it works' in q:
         return (
-            'This dashboard uses a Random Forest classifier to estimate machine failure risk from torque, speed, temperature, and tool wear. '
+            'This dashboard uses an XGBoost classifier to estimate machine failure risk from torque, speed, temperature, and tool wear. '
             'The risk score helps prioritize preventive maintenance before a real failure occurs.'
         )
 
@@ -555,8 +555,8 @@ with intro_col2:
 st.markdown('---')
 
 st.subheader('Predictive Insights')
-st.markdown('**Can we predict failures before they happen?**  \nYes — the Random Forest model can identify machines that are likely to fail based on torque, rotational speed, tool wear, and temperature. This enables preventive maintenance before actual failure occurs.')
-st.markdown(f'**Model used:** Random Forest  \n**Evaluation summary:** Accuracy {accuracy*100:.1f}%, Precision {precision*100:.1f}%, Recall {recall*100:.1f}%, F1 Score {f1*100:.1f}%')
+st.markdown('**Can we predict failures before they happen?**  \nYes — the XGBoost model can identify machines that are likely to fail based on torque, rotational speed, tool wear, and temperature. This enables preventive maintenance before actual failure occurs.')
+st.markdown(f'**Model used:** XGBoost  \n**Evaluation summary:** Accuracy {accuracy*100:.1f}%, Precision {precision*100:.1f}%, Recall {recall*100:.1f}%, F1 Score {f1*100:.1f}%')
 st.markdown('---')
 
 st.subheader('Dashboard Filters')
@@ -628,8 +628,8 @@ metric_col3.metric('Recall', f"{recall * 100:.1f}%")
 metric_col4.metric('F1 Score', f"{f1 * 100:.1f}%")
 
 st.markdown('### Model Summary')
-st.markdown('**Can we predict failures before they happen?**  \nYes — the Random Forest model can identify machines that are likely to fail based on torque, rotational speed, tool wear, and temperature. This enables preventive maintenance before actual failure occurs.')
-st.markdown('**Model used:** Random Forest  \n**Key interpretation:** The model correctly classifies most machine conditions. High recall means most failures are detected, while moderate precision indicates some false alarms. Torque and rotational speed are the strongest failure indicators.')
+st.markdown('**Can we predict failures before they happen?**  \nYes — the XGBoost model can identify machines that are likely to fail based on torque, rotational speed, tool wear, and temperature. This enables preventive maintenance before actual failure occurs.')
+st.markdown('**Model used:** XGBoost  \n**Key interpretation:** The model correctly classifies most machine conditions. High recall means most failures are detected, while moderate precision indicates some false alarms. Torque and rotational speed are the strongest failure indicators.')
 st.markdown('---')
 
 # --- 5. Model Analysis Charts ---
@@ -638,8 +638,8 @@ analysis_col1, analysis_col2 = st.columns([2, 1])
 with analysis_col1:
     if not feature_importance_df.empty:
         st.markdown('#### Which variables matter most?')
-        st.markdown('The horizontal bar chart below shows the feature importance produced by the Random Forest model. Features are sorted by importance descending.')
-        fig_imp = px.bar(feature_importance_df, x='Importance', y='Feature', orientation='h', title='Feature Importance (Random Forest)')
+        st.markdown('The horizontal bar chart below shows the feature importance produced by the XGBoost model. Features are sorted by importance descending.')
+        fig_imp = px.bar(feature_importance_df, x='Importance', y='Feature', orientation='h', title='Feature Importance (XGBoost)')
         fig_imp.update_layout(yaxis={'categoryorder':'total ascending'}, xaxis_title='Importance', yaxis_title='Feature')
         st.plotly_chart(fig_imp, use_container_width=True)
     else:
